@@ -5,38 +5,45 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Toast;
 
-public class MainActivity extends Activity implements View.OnClickListener {
 
-    String editTextData;
+public class MainActivity extends Activity implements View.OnClickListener{
 
-    Button button;
-    EditText editText;
+
+    Button btnTL, btnTR, btnBL, btnBR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editText = (EditText) findViewById(R.id.editText);
-        button = (Button) findViewById(R.id.button);
+        btnTL = (Button) findViewById(R.id.btnTL);
+        btnTR = (Button) findViewById(R.id.btnTR);
+        btnBL = (Button) findViewById(R.id.btnBL);
+        btnBR = (Button) findViewById(R.id.btnBR);
 
-
-        button.setOnClickListener(this);
-
+        btnTL.setOnClickListener(this);
+        btnTR.setOnClickListener(this);
+        btnBL.setOnClickListener(this);
+        btnBR.setOnClickListener(this);
 
     }
 
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, Main2Activity.class);
+        Button btn = (Button) v;
+        if(btn.getId() == R.id.btnTL){
+            Intent intent = new Intent(this, RecyclerActivity.class);
+            startActivity(intent);
 
-        editTextData = (!editText.getText().toString().equals("Enter Text"))?editText.getText().toString():"Nothing was entered";
+        }else {
+            makeToast(btn.getText().toString());
+        }
+    }
 
-        intent.putExtra("editText value",editTextData);
-        startActivity(intent);
-
+    private void makeToast(String text){
+        Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
     }
 }
