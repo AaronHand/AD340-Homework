@@ -33,6 +33,7 @@ public class RecyclerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
+
         try {
             new getAutos().execute();
         } catch (MalformedURLException e) {
@@ -82,11 +83,8 @@ public class RecyclerActivity extends Activity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            Log.d("-RESULT-",result);
-
             ArrayList<Automobile> autos = new ArrayList<>();
             try {
-                Log.i("--","made it.");
 
                 JSONObject object = (JSONObject) new JSONTokener(result).nextValue();
 
@@ -98,12 +96,6 @@ public class RecyclerActivity extends Activity {
 
                 }
 
-
-
-//                for(int i=0; i<jsonArray.length(); i++){
-//                    JSONObject ja = jsonArray.getJSONObject(i);
-//                    autos.add(new Automobile(ja.getInt("Make_ID"),ja.getString("Make_Name")));
-//                }
 
                 RecyclerView rvAutomobiles = (RecyclerView) findViewById(R.id.recyclerView);
                 CustomAdapter adapter = new CustomAdapter(autos,getApplicationContext());

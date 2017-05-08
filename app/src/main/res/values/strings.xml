@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aaron Hand - Assignment 2</string>
+    <string name="app_name">Aaron Hand - Assignment 4</string>
     <string name="enter_text">Enter Text</string>
     <string name="send">Send</string>
     <string name="buttonTL">Top Left</string>
@@ -7,4 +7,5 @@
     <string name="buttonBL">Bottom Left</string>
     <string name="buttonBR">Bottom Right</string>
     <string name="placeholder">placeholder</string>
+    <string name="action_settings">Settings</string>
 </resources>
